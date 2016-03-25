@@ -18,10 +18,11 @@ $('.popup-link').magnificPopup({
   image: //Add title and attribute to pop up
   {
     titleSrc: function(item) {
-      return item.el.attr('title') + '<small>' + item.el.attr('alt') + '</small>';
+      return item.el.children().attr('title') + '<small>' + item.el.children().attr('alt') + '</small>';
     }
   }
 });
+
 
 /************* Disable Enter Reset  **************/
 $(document).keypress(function(event){
@@ -40,7 +41,7 @@ $(function() {
     if( $(window).scrollTop() > stickySearch ) {
       $('.search').css({position: 'fixed', top: '0px', width: '100%'});
     } else {
-      $('.search').css({position: 'static', top: '0px'})
+      $('.search').css({position: 'static', top: '0px'});
     }
     
   });
@@ -72,7 +73,7 @@ $(document).ready(function() {
       var search_string = $(this).val().toLowerCase();
  
         // Loop through the link list
-        $("a").each(function(){
+        $("a img").each(function(){
 
             // If the image title does not contain the text phrase fade it out
             if ($(this).attr('title').search(new RegExp(search_string, "i")) < 0 && $(this).attr('alt').search(new RegExp(search_string, "i")) < 0) {
@@ -95,5 +96,3 @@ $(document).ready(function() {
     
    
 });/* doc ready function*/
-
-
